@@ -1,0 +1,90 @@
+﻿<Window x:Class="Parser.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:Parser"
+        mc:Ignorable="d" Icon="Images/icon.png"
+        Title="Parser" MinHeight="350" Height="350" MinWidth="400" Width="800"
+        WindowStartupLocation="CenterScreen">
+    <Grid Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.Resources>
+            <Style TargetType="TextBox">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Height" Value="35"/>
+                <Setter Property="Margin" Value="20,0"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Style.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Style.Resources>
+            </Style>
+            
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="Margin" Value="30,0,25,0"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Foreground" Value="Gray"/>
+            </Style>
+            
+            <Style TargetType="Button">
+                <Setter Property="Height" Value="35"/>
+                <Setter Property="Margin" Value="0,0,10,0"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Content" Value="Выбрать"/>
+                <Style.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Style.Resources>
+            </Style>
+        </Grid.Resources>
+
+        <TextBlock Name="p1" Grid.Row="0" Grid.Column="0" Text="Путь к списку доменов"/>
+        <TextBox Name="tb1" Tag="p1" TextChanged="TextBox_TextChanged" Grid.Row="0" Grid.Column="0"/>
+
+        <TextBlock Name="p2" Grid.Row="1" Grid.Column="0" Text="Ключевые слова (через запятую)"/>
+        <TextBox Name="tb2" Tag="p2" TextChanged="TextBox_TextChanged" Grid.Row="1" Grid.Column="0"/>
+
+        <TextBlock Name="p3" Grid.Row="2" Grid.Column="0" Text="Путь к файлу в котором будут записываться ссылки, которые прошли проверку"/>
+        <TextBox Name="tb3" Tag="p3" TextChanged="TextBox_TextChanged" Grid.Row="2" Grid.Column="0"/>
+
+        <TextBlock Name="p4" Grid.Row="3" Grid.Column="0" Text="Путь к файлу в котором будут записываться ссылки, которые не прошли проверку"/>
+        <TextBox Name="tb4" Tag="p4" TextChanged="TextBox_TextChanged" Grid.Row="3" Grid.Column="0"/>
+
+        <TextBlock Name="p5" Grid.Row="4" Grid.Column="0" Text="Путь к файлу User-Agent"/>
+        <TextBox Name="tb5" Tag="p5" TextChanged="TextBox_TextChanged" Grid.Row="4" Grid.Column="0"/>
+
+        <Button Name="bd" Grid.Column="1" Grid.Row="0" Click="ButtonDomain_Click"/>
+        <Button Name="bw" Grid.Column="1" Grid.Row="1" Click="ButtonWord_Click"/>
+        <Button Name="bf" Grid.Column="1" Grid.Row="2" Click="ButtonFile_Click"/>
+        <Button Name="bef" Grid.Column="1" Grid.Row="3" Click="ButtonErrorFile_Click"/>
+        <Button Name="bua" Grid.Column="1" Grid.Row="4" Click="ButtonUserAgent_Click"/>
+        <Button Name="bs" Grid.Column="1" Grid.Row="5" Content="Старт" Click="ButtonStart_Click"/>
+
+        <ProgressBar Name="bar" Value="0" Grid.Row="5" Grid.Column="0" Height="35" Margin="20,0" VerticalAlignment="Center">
+            <ProgressBar.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </ProgressBar.Resources>
+        </ProgressBar>
+    </Grid>
+</Window>
